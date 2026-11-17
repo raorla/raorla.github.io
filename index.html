@@ -60,10 +60,10 @@ a { color: inherit; }
 .skip-link { position: fixed; z-index: 60; top: calc(env(safe-area-inset-top, 0px) + 10px); left: 10px; padding: 10px 16px; border-radius: 999px; background: var(--accent); color: #04110F; font-weight: 500; text-decoration: none; translate: 0 -200%; }
 .skip-link:focus-visible { translate: 0 0; }
 #main-content { display: block; height: 0; }
-.motion-btn { width: 32px; padding: 0; display: inline-grid; place-items: center; }
-.motion-btn svg { width: 12px; height: 12px; }
-.motion-btn .i-play { display: none; }
-.paused .motion-btn .i-play { display: block; } .paused .motion-btn .i-pause { display: none; }
+.motion-link { background: none; border: 0; padding: 4px 0; font: inherit; color: var(--ink-3); cursor: pointer; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--line-2); }
+.motion-link:hover { color: var(--ink); }
+.motion-link .m-play, .paused .motion-link .m-pause { display: none; }
+.paused .motion-link .m-play { display: inline; }
 .paused *, .paused *::before, .paused *::after { animation-play-state: paused !important; }
 
 /* ---------- nav ---------- */
@@ -73,6 +73,8 @@ a { color: inherit; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; margin-right: auto; }
 .brand img { width: 30px; height: 30px; border-radius: 8px; image-rendering: pixelated; border: 1px solid var(--line-2); }
 .brand b { font-family: var(--display); font-weight: 500; font-size: 20px; letter-spacing: -0.01em; }
+.brand .short { display: none; }
+@media (max-width: 480px) { .brand .full { display: none; } .brand .short { display: inline; } }
 .nav { display: flex; gap: 26px; }
 .nav a { font-size: 14px; color: var(--ink-2); text-decoration: none; transition: color .2s; }
 .nav a:hover { color: var(--ink); }
@@ -83,7 +85,7 @@ a { color: inherit; }
 @media (max-width: 480px) { .cta-top { display: none; } }
 
 /* ---------- hero ---------- */
-.hero { position: relative; min-height: min(100vh, 960px); padding-top: 132px; padding-bottom: 64px; overflow: hidden; isolation: isolate; }
+.hero { position: relative; padding-top: 150px; padding-bottom: 56px; overflow: hidden; isolation: isolate; }
 .hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background:
   radial-gradient(60% 55% at 72% 38%, rgba(91,197,184,.10), transparent 70%),
   radial-gradient(40% 40% at 90% 90%, rgba(233,162,80,.06), transparent 70%); }
@@ -128,7 +130,7 @@ h1 .dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; 
 .btn.ghost { border: 1px solid var(--line-2); color: var(--ink); }
 .btn.ghost:hover { border-color: var(--ink-3); }
 
-.portrait { position: relative; z-index: 1; height: clamp(640px, 96vh, 980px); margin: -90px -120px -70px -40px; }
+.portrait { position: relative; z-index: 1; height: clamp(600px, 80vh, 860px); margin: -150px -120px -30px -40px; }
 .portrait canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 #p2d { touch-action: pan-y; cursor: crosshair; -webkit-mask-image: linear-gradient(180deg, #000 78%, transparent); mask-image: linear-gradient(180deg, #000 78%, transparent); }
 @media (max-width: 980px) {
@@ -159,7 +161,8 @@ section.block { padding-block: 128px 0; }
 .head { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px 72px; align-items: end; margin-bottom: 56px; }
 @media (max-width: 880px) { .head { grid-template-columns: minmax(0, 1fr); } }
 .eyebrow { display: flex; align-items: center; gap: 12px; font: 500 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 34px; }
-.head p.eyebrow, .close p.eyebrow { margin: 0 0 30px; }
+.head p.eyebrow { margin: 0 0 30px; }
+.close p.eyebrow { margin: 0 0 48px; }
 .eyebrow b { color: var(--accent); font-weight: 500; }
 .eyebrow::after { content: ""; width: 40px; height: 1px; background: var(--line-2); }
 h2 { font-family: var(--display); font-weight: 400; font-size: clamp(40px, 5.2vw, 72px); line-height: 1; letter-spacing: -0.03em; margin: 0; text-wrap: balance; }
@@ -339,13 +342,20 @@ section.block, .close { position: relative; isolation: isolate; }
   font: 500 12px/2 var(--mono); color: var(--accent); opacity: .085; white-space: nowrap;
   -webkit-mask-image: radial-gradient(60% 70% at 30% 40%, #000 10%, transparent 75%); mask-image: radial-gradient(60% 70% at 30% 40%, #000 10%, transparent 75%); }
 .codebg div { width: max-content; }
+@media (prefers-reduced-motion: no-preference) { .codebg div { transition: translate .45s cubic-bezier(.2,.8,.2,1); } }
 .codebg div:nth-child(3n) { color: var(--ink); }
 .codebg div:nth-child(7n) { color: var(--human); }
+.codebg b { font-weight: 600; color: #8FE3D7; }
+.codebg i { font-style: normal; color: var(--ink); }
+.codebg.hi b { color: #B5F2E9; }
 @media (prefers-reduced-motion: no-preference) {
   .codebg div { animation: drift var(--d, 60s) linear infinite; }
   .codebg div:nth-child(even) { animation-direction: reverse; }
 }
 @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.codebg.hi { opacity: .6; -webkit-mask-image: radial-gradient(230px circle at var(--mx, -999px) var(--my, -999px), #000 0%, rgba(0,0,0,.35) 45%, transparent 75%); mask-image: radial-gradient(230px circle at var(--mx, -999px) var(--my, -999px), #000 0%, rgba(0,0,0,.35) 45%, transparent 75%); }
+.codebg.hi div:nth-child(n) { color: var(--accent); }
+.codebg.hi div:nth-child(3n) { color: var(--ink); }
 
 /* ---------- reveal on scroll (visible at rest; motion only once in view) ---------- */
 @media (prefers-reduced-motion: no-preference) {
@@ -386,7 +396,7 @@ section.block, .close { position: relative; isolation: isolate; }
 
 <header class="top" id="top-bar">
   <div class="wrap">
-    <a class="brand" href="#top"><img src="assets/avatar-dark.png" alt="" width="30" height="30"><b>Orlando R.</b></a>
+    <a class="brand" href="#top"><img src="assets/avatar-dark.png" alt="" width="30" height="30"><b><span class="full">Orlando Rasolofoniaina</span><span class="short">Orlando R.</span></b></a>
     <nav class="nav" aria-label="Sections">
       <a href="#agents"><span class="en">Agents</span><span class="fr">Agents</span></a>
       <a href="#products"><span class="en">Products</span><span class="fr">Produits</span></a>
@@ -394,7 +404,6 @@ section.block, .close { position: relative; isolation: isolate; }
       <a href="#experience"><span class="en">Experience</span><span class="fr">Parcours</span></a>
       <a href="#skills"><span class="en">Skills</span><span class="fr">Compétences</span></a>
     </nav>
-    <button class="pill motion-btn" id="motion" type="button" aria-label="Pause animations"><svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg><svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg></button>
     <button class="pill" id="lang" type="button">FR</button>
     <a class="cta-top" href="#contact"><span class="en">Contact</span><span class="fr">Contact</span></a>
   </div>
@@ -405,7 +414,6 @@ section.block, .close { position: relative; isolation: isolate; }
   <section class="hero">
     <div class="wrap">
       <div class="hero-copy">
-        <p class="name">Orlando Rasolofoniaina</p>
         <h1 class="en">I build AI agents that <em>ship real work</em><span class="dot" aria-hidden="true"></span></h1>
         <h1 class="fr">Je construis des agents IA qui <em>livrent</em><span class="dot" aria-hidden="true"></span></h1>
         <p class="typer" aria-live="off"><span class="en">Agents that </span><span class="fr">Des agents qui </span><span class="word" id="word">open pull requests</span></p>
@@ -704,7 +712,7 @@ section.block, .close { position: relative; isolation: isolate; }
   </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 Orlando Rasolofoniaina</span><span>Lyon · Antananarivo</span></div></footer>
+<footer><div class="wrap"><span>© 2026 Orlando Rasolofoniaina</span><button class="motion-link" id="motion" type="button"><span class="m-pause"><span class="en">Pause animations</span><span class="fr">Mettre les animations en pause</span></span><span class="m-play"><span class="en">Play animations</span><span class="fr">Relancer les animations</span></span></button></div></footer>
 
 <script>
 (function () {
@@ -730,8 +738,6 @@ section.block, .close { position: relative; isolation: isolate; }
   try { paused = localStorage.getItem('motion') === 'paused'; } catch (e) {}
   function applyMotion() {
     root.classList.toggle('paused', paused);
-    var fr = root.dataset.lang === 'fr';
-    motionBtn.setAttribute('aria-label', paused ? (fr ? 'Relancer les animations' : 'Play animations') : (fr ? 'Mettre les animations en pause' : 'Pause animations'));
   }
   applyMotion();
   motionBtn.addEventListener('click', function () { paused = !paused; try { localStorage.setItem('motion', paused ? 'paused' : 'on'); } catch (e) {} applyMotion(); if (window.__wake) window.__wake(); });
@@ -785,14 +791,30 @@ section.block, .close { position: relative; isolation: isolate; }
   }
 
   /* code backdrops behind section heads */
+  var KW = /\b(deny|allow|require_approval|ALWAYS_DENIED_CAPABILITIES|merge_pull_request|read_secret|export|const|return|function|if|async|await|type)\b/g;
+  function hl(s) {
+    s = s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return s.replace(KW, '\u0001$1\u0002').replace(/([{}()\[\];]|=&gt;|===|=)/g, '<i>$1</i>').replace(/\u0001/g, '<b>').replace(/\u0002/g, '</b>');
+  }
   function backdrops(code) {
     document.querySelectorAll('section.block, .close').forEach(function (sec, si) {
       var bg = document.createElement('div'); bg.className = 'codebg'; bg.setAttribute('aria-hidden', 'true');
       for (var r = 0; r < 10; r++) {
         var start = ((si * 10 + r) * 977) % Math.max(1, code.length - 400), line = code.slice(start, start + 220);
-        var d = document.createElement('div'); d.textContent = line + '   ' + line; d.style.setProperty('--d', (70 + ((r * 37) % 60)) + 's'); bg.appendChild(d);
+        var d = document.createElement('div'); d.innerHTML = hl(line + '   ' + line); d.style.setProperty('--d', (70 + ((r * 37) % 60)) + 's'); bg.appendChild(d);
       }
       sec.insertBefore(bg, sec.firstChild);
+      var hi = bg.cloneNode(true); hi.classList.add('hi'); sec.insertBefore(hi, bg.nextSibling);
+      var rowsA = bg.children, rowsB = hi.children;
+      function magnet(my) {
+        for (var i = 0; i < rowsA.length; i++) {
+          var cy = rowsA[i].offsetTop + rowsA[i].offsetHeight / 2, dy = cy - my, R = 170, f = Math.max(0, 1 - Math.abs(dy) / R);
+          var off = (reduce || paused || my < -500) ? 0 : (dy < 0 ? -1 : 1) * f * f * 16;
+          rowsA[i].style.translate = rowsB[i].style.translate = '0 ' + off.toFixed(1) + 'px';
+        }
+      }
+      sec.addEventListener('pointermove', function (e) { var r = hi.getBoundingClientRect(), my = e.clientY - r.top; hi.style.setProperty('--mx', (e.clientX - r.left) + 'px'); hi.style.setProperty('--my', my + 'px'); magnet(my); });
+      sec.addEventListener('pointerleave', function () { hi.style.setProperty('--mx', '-999px'); hi.style.setProperty('--my', '-999px'); magnet(-999); });
     });
   }
 
@@ -851,7 +873,7 @@ section.block, .close { position: relative; isolation: isolate; }
       chars.push(c);
       grid[x + ',' + y] = c;
     }
-    fN = '500 ' + fs + 'px "Geist Mono", ui-monospace, monospace'; fB = '700 ' + fs + 'px "Geist Mono", ui-monospace, monospace';
+    fN = '500 ' + fs + 'px "Geist Mono", ui-monospace, monospace'; fB = '600 ' + fs + 'px "Geist Mono", ui-monospace, monospace';
     drawBase();
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); ctx.drawImage(base, 0, 0);
     ctx.font = fN; ctx.textBaseline = 'top';
