@@ -8,6 +8,17 @@
 <meta property="og:title" content="Orlando Rasolofoniaina · AI Engineer">
 <meta property="og:description" content="I build AI agents that ship real work, with the guardrails written in code.">
 <meta name="theme-color" content="#07090A">
+<link rel="canonical" href="https://raorla.github.io/">
+<link rel="icon" type="image/png" href="assets/avatar-dark.png">
+<link rel="apple-touch-icon" href="assets/avatar-dark.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://raorla.github.io/">
+<meta property="og:image" content="https://raorla.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Orlando Rasolofoniaina, AI Engineer: I build AI agents that ship real work.">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Orlando Rasolofoniaina", "jobTitle": "AI Engineer", "url": "https://raorla.github.io/", "address": {"@type": "PostalAddress", "addressLocality": "Lyon", "addressCountry": "FR"}, "sameAs": ["https://github.com/raorla", "https://www.linkedin.com/in/orlandoras/", "https://lyrify.studio/"], "knowsAbout": ["AI agents", "LLM", "Claude Agent SDK", "MCP", "TypeScript", "Confidential computing"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap">
@@ -136,9 +147,9 @@ h1 .dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; 
 @media (max-width: 980px) {
   .hero { padding-top: 96px; }
   .hero .wrap { grid-template-columns: minmax(0, 1fr); }
-  .portrait { order: -1; height: 420px; margin: -10px -18px 8px; }
+  .portrait { order: -1; height: 340px; margin: -30px -18px -10px; }
   }
-@media (max-width: 560px) { .portrait { height: 360px; } }
+@media (max-width: 560px) { .portrait { height: 290px; } .hero h1 { margin-bottom: 18px; } }
 
 /* ---------- proof ---------- */
 .proof { border-block: 1px solid var(--line); background: var(--bg-2); }
@@ -189,7 +200,7 @@ h2 em { font-style: italic; color: var(--accent); }
 .foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chips span { font: 400 12px/1 var(--mono); color: var(--ink-2); padding: 7px 10px; border-radius: 999px; border: 1px solid var(--line-2); }
-.link { font: 500 14px/1 var(--sans); color: var(--accent); text-decoration: none; display: inline-flex; gap: 6px; align-items: center; margin-left: auto; }
+.link { font: 500 14px/1 var(--sans); color: var(--accent); text-decoration: none; display: inline-flex; gap: 6px; align-items: center; margin-left: auto; min-block-size: 32px; padding-block: 8px; }
 .link:hover { text-decoration: underline; text-underline-offset: 5px; }
 
 /* mockups */
@@ -578,7 +589,7 @@ section.block, .close { position: relative; isolation: isolate; }
       </div>
       <div class="grid">
         <a class="product" href="https://github.com/myVolaApp" target="_blank" rel="noopener"><header><h3>Myvola</h3><span class="kind"><span class="en">Diaspora FX</span><span class="fr">Change diaspora</span></span></header><p class="en">A personal AI agent to swap euros or dollars for ariary, person to person.</p><p class="fr">Un agent IA personnel pour échanger euros ou dollars contre des ariary, de personne à personne.</p><div class="hard"><span class="lbl"><span class="en">The hard part</span><span class="fr">Le plus dur</span></span><span class="en">A deterministic SQL matching engine, and a product that never holds money.</span><span class="fr">Un moteur de rapprochement SQL déterministe, et un produit qui ne détient jamais d'argent.</span></div></a>
-        <a class="product" href="https://github.com/Vaolive" target="_blank" rel="noopener"><header><h3>MGLive</h3><span class="kind">Live shopping</span></header><p class="en">Buy during a live video, pay by mobile money, the seller is paid on delivery.</p><p class="fr">On achète pendant un live, on paie en mobile money, la vendeuse est payée à la livraison.</p><div class="hard"><span class="lbl"><span class="en">The hard part</span><span class="fr">Le plus dur</span></span><span class="en">Escrow on a double-entry ledger that must balance after every journey.</span><span class="fr">Un séquestre sur une comptabilité en partie double qui doit s'équilibrer après chaque parcours.</span></div></a>
+        <div class="product"><header><h3>MGLive</h3><span class="kind">Live shopping</span></header><p class="en">Buy during a live video, pay by mobile money, the seller is paid on delivery.</p><p class="fr">On achète pendant un live, on paie en mobile money, la vendeuse est payée à la livraison.</p><div class="hard"><span class="lbl"><span class="en">The hard part</span><span class="fr">Le plus dur</span></span><span class="en">Escrow on a double-entry ledger that must balance after every journey.</span><span class="fr">Un séquestre sur une comptabilité en partie double qui doit s'équilibrer après chaque parcours.</span></div></div>
         <a class="product" href="https://github.com/BriisaApp" target="_blank" rel="noopener"><header><h3>Briisa</h3><span class="kind"><span class="en">Ticketing</span><span class="fr">Billetterie</span></span></header><p class="en">The event app delivered with your ticket: map, programme, emergency screen, staff gate app.</p><p class="fr">L'app de l'événement livrée avec le billet : plan, programme, écran d'urgence, app de contrôle.</p><div class="hard"><span class="lbl"><span class="en">The hard part</span><span class="fr">Le plus dur</span></span><span class="en">It works offline: a Bluetooth and Wi-Fi mesh with end-to-end encrypted chat.</span><span class="fr">Elle marche hors ligne : un mesh Bluetooth et Wi-Fi avec chat chiffré de bout en bout.</span></div></a>
         <a class="product" href="https://zap.zapew.com" target="_blank" rel="noopener"><header><h3>ZAP</h3><span class="kind"><span class="en">Anonymous chat</span><span class="fr">Chat anonyme</span></span></header><p class="en">Meet strangers in seconds, keep the conversations that click.</p><p class="fr">Rencontrer des inconnus en quelques secondes, garder les conversations qui comptent.</p><div class="hard"><span class="lbl"><span class="en">The hard part</span><span class="fr">Le plus dur</span></span><span class="en">An AI companion when no human is free, and every message moderated before relay.</span><span class="fr">Un compagnon IA quand personne n'est libre, et chaque message modéré avant relais.</span></div></a>
         <a class="product" href="https://github.com/MozikaApp" target="_blank" rel="noopener"><header><h3>Lyrify</h3><span class="kind"><span class="en">Music app</span><span class="fr">App musicale</span></span></header><p class="en">Malagasy music, from salegy to tsapiky, with karaoke lyrics in three languages.</p><p class="fr">La musique malgache, du salegy au tsapiky, avec paroles karaoké en trois langues.</p><div class="hard"><span class="lbl"><span class="en">The hard part</span><span class="fr">Le plus dur</span></span><span class="en">Offline downloads for expensive data, and a pass paid by mobile money.</span><span class="fr">Le hors ligne quand les données coûtent cher, et un pass payé en mobile money.</span></div></a>
