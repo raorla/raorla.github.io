@@ -353,3 +353,5 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   .proof .wrap > div { padding: 24px 14px; } .proof .wrap > div:nth-child(odd) { border-left: 0; padding-left: 0; }
   .proof .wrap > div:nth-child(n+3) { border-top: 1px solid var(--line); }
 }
+.merge p.refused { max-width: none; }
+@media (min-width: 640px) { .merge p.refused { white-space: nowrap; } }
